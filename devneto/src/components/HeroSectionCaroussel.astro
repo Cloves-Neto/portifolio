@@ -1,0 +1,99 @@
+---
+interface SocialLink {
+  platform: string;
+  url: string;
+  icon: string;
+}
+
+const socialLinks: SocialLink[] = [
+  {
+    platform: "LINKEDIN",
+    url: "https://linkedin.com",
+    icon: "linkedin",
+  },
+  {
+    platform: "GITHUB",
+    url: "https://github.com",
+    icon: "github",
+  },
+];
+---
+
+<section class="relative w-full h-[100dvh] bg-[#140F2D] overflow-hidden " id="home">
+  
+  {/* Background Text Carousel */}
+
+  <div class="absolute inset-0 flex items-center whitespace-nowrap overflow-hidden" aria-hidden="true">
+
+    <div class="animate-carousel flex">
+      {[...Array(10)].map((_) => (
+        <span class="text-[20vw] font-bold tracking-widest opacity-5 text-gray-400 mx-4">
+          CLOVES NETO
+        </span>
+      ))}
+    </div>
+  </div>
+
+  {/* Main Content */}
+  <div class="relative z-10 flex flex-col items-center justify-center min-h-full px-4 text-center">
+    <h1 class="max-w-4xl mb-4 text-2xl font-bold tracking-wider text-white md:text-5xl">
+      FULL STACK WEB DEVELOPER
+      <span class="block mt-2">&amp; UI/UX DESIGNER</span>
+    </h1>
+
+    <p class="max-w-xl mb-12 text-gray-400 mt-2 md:text-xl">
+      Design and code aligned to create solutions that delight
+    </p>
+
+    <div class="flex gap-8">
+      {socialLinks.map(({ platform, url, icon }) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 text-white hover:text-purple-500 transition-colors md:text-2xl"
+        >
+          {icon === 'linkedin' ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-5 md:w-10 h-10"
+            >
+              <path d="M20.47,2H3.53A1.45,1.45,0,0,0,2.06,3.43V20.57A1.45,1.45,0,0,0,3.53,22H20.47a1.45,1.45,0,0,0,1.47-1.43V3.43A1.45,1.45,0,0,0,20.47,2ZM8.09,18.74h-3v-9h3ZM6.59,8.48h0a1.56,1.56,0,1,1,0-3.12,1.57,1.57,0,1,1,0,3.12ZM18.91,18.74h-3V13.91c0-1.21-.43-2-1.52-2A1.65,1.65,0,0,0,12.85,13a2,2,0,0,0-.1.73v5h-3s0-8.18,0-9h3V11A3,3,0,0,1,15.46,9.5c2,0,3.45,1.29,3.45,4.06Z" />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 md:w-11 h-11"
+            >
+              <path d="M12,2A10,10,0,0,0,2,12a10,10,0,0,0,6.84,9.49c.5.09.68-.22.68-.48V19.2c-2.78.6-3.37-1.34-3.37-1.34a2.67,2.67,0,0,0-1.11-1.47c-.91-.62.07-.61.07-.61a2.11,2.11,0,0,1,1.54,1,2.14,2.14,0,0,0,2.91.83,2.16,2.16,0,0,1,.63-1.34C7.56,15.7,5.11,15,5.11,11.47a3.89,3.89,0,0,1,1-2.71,3.57,3.57,0,0,1,.1-2.64s.84-.27,2.75,1a9.63,9.63,0,0,1,5,0c1.91-1.29,2.75-1,2.75-1a3.57,3.57,0,0,1,.1,2.64,3.89,3.89,0,0,1,1,2.71c0,3.51-2.46,4.23-4.81,4.46a2.43,2.43,0,0,1,.69,1.88v2.78c0,.27.18.58.69.48A10,10,0,0,0,22,12,10,10,0,0,0,12,2Z" />
+            </svg>
+          )}
+          {platform}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes carousel {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-carousel {
+    animation: carousel 60s linear infinite;
+  }
+</style>
